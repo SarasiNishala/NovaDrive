@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaDrive - Drive What Defines You</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('image/homePageMainImage.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        nav {
+            display: flex;
+            z-index: 1000;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-links a:hover {
+            color: #333;
+            background-color: #ffc107;
+            transform: translateY(-2px);
+        }
+        
+        .login-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid #ffc107;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-left: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .login-btn:hover {
+            background-color: #ffc107;
+            color: #333;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .content {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            color: white;
+            text-align: center;
+            max-width: 500px;
+        }
+        
+        .content h1 {
+            font-size: 44px;
+            margin-bottom: 20px;
+            color: #0e0d0c;
+        }
+        
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #333;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(139, 104, 56, 0.5) 100%);
+        }
+        
+        /* New styles based on the image */
+        .vehicle-showcase {
+            background-color: #e49131;
+            padding: 30px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .vehicle-showcase h2 {
+            color: white;
+            text-transform: uppercase;
+            font-size: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .vehicle-grid {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1000px;
+        }
+        
+        .vehicle-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+        }
+        
+        .vehicle-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .vehicle-item p {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .about-section {
+            display: flex;
+            padding: 50px 20px;
+            background-color: #f9f5f0;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .about-image {
+            width: 40%;
+            max-width: 400px;
+            padding-right: 40px;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .about-content {
+            width: 50%;
+            max-width: 600px;
+        }
+        
+        .about-content h2 {
+            color: #5e3f0d;
+            font-size: 30px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .about-content p {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: left;
+        }
+        
+        /* Utility class for section dividers */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background-color: #eee;
+        }
+        
+        /* Dodge Challenger Section Styles */
+        .challenger-section {
+            padding: 50px 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .challenger-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .challenger-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        
+        .challenger-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .challenger-content {
+            flex: 1;
+            padding: 0 30px;
+        }
+        
+        .challenger-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .challenger-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .challenger-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .challenger-subtitle {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .challenger-description {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .challenger-features {
+            padding-left: 20px;
+        }
+        
+        .challenger-features li {
+            margin-bottom: 8px;
+            font-size: 16px;
+            list-style-type: none;
+            position: relative;
+        }
+        
+        .challenger-features li:before {
+            content: "• ";
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+        <nav>
+            <div class="logo">NovaDrive</div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Product</a>
+                <a href="#">Contact us</a>
+                <a href="loginPage.html">Log in</a>
+            </div>
+        </nav>
+        
+        
+        <div class="content">
+            <h1>Drive What Defines You</h1>
+            <p>Push limits, not just pedals. Drive a machine that reflects your ambition, power, and purpose. This is more than a car — it's your signature on the road.</p>
+            <a href="#" class="btn">Join the Drive</a>
+        </div>
+    </div>
+
+    <!-- New Vehicle Showcase Section -->
+    <div class="vehicle-showcase">
+        <h2>Auto Detail Performance Vehicles</h2>
+        <div class="vehicle-grid">
+            <div class="vehicle-item">
+                <img src="image/varImage1.png" alt="2024 Hornet">
+                <p>2024 HORNET</p>
+            </div>
+            <div class="vehicle-item">
+                <img src="image/varImage2.png" alt="2023 Durango">
+                <p>2023 DURANGO</p>
+            </div>
+            <div class="vehicle-item">
+                <img src="image/varImage3.png" alt="2023 Charger">
+                <p>2023 CHARGER</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <div class="about-image">
+            <img src="image/varImage4.png" alt="Luxury Performance Car">
+        </div>
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>Welcome to the future of luxury performance.</p>
+            <p>At NovaDrive, we don't just build vehicles — we craft experiences that echo your ambition and elevate your journey. Every curve, every detail, every engine roar is designed to reflect who you are and what you strive for. It's time to drive a statement. It's time to Drive What Defines You.</p>
+        </div>
+    </div>
+    
+    <!-- Dodge Challenger Section -->
+    <div class="challenger-section">
+        <div class="challenger-container">
+            <!-- First Challenger Row -->
+            <div class="challenger-row">
+                <div class="challenger-content">
+                    <h3 class="challenger-title">Dodge Challenger</h3>
+                    <h4 class="challenger-subtitle">Pure Muscle. Bold Statement.</h4>
+                    <p class="challenger-description">The Dodge Challenger delivers raw power and fearless design for those who lead the pack.</p>
+                    <ul class="challenger-features">
+                        <li>Pure Muscle. Bold Statement.</li>
+                        <li>Raw power meets fearless design.</li>
+                        <li>Built for those who lead.</li>
+                    </ul>
+                </div>
+                <div class="challenger-image">
+                    <img src="image/varImage5.png" alt="Red Dodge Challenger">
+                </div>
+            </div>
+            
+            <!-- Second Challenger Row -->
+            <div class="challenger-row">
+                <div class="challenger-content">
+                    <h3 class="challenger-title">Dodge Challenger</h3>
+                    <h4 class="challenger-subtitle">Pure Muscle. Bold Statement.</h4>
+                    <p class="challenger-description">The Dodge Challenger delivers raw power and fearless design for those who lead the pack.</p>
+                    <ul class="challenger-features">
+                        <li>Pure Muscle. Bold Statement.</li>
+                        <li>Raw power meets fearless design.</li>
+                        <li>Built for those who lead.</li>
+                    </ul>
+                </div>
+                <div class="challenger-image">
+                    <img src="image/varImage6.png" alt="Gray Dodge Challenger">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
